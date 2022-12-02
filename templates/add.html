@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+    Add Task
+{% endblock %}
+
+
+{% block body %}
+    <div class="card">
+        <h5 class="card-header">New Task</h5>
+        <div class="card-body">
+            <h3 class="card-title"><strong>Add a new task</strong></h3>
+            <form action="{% url 'add_task' %}" method="post">
+                <label for="task">Task name:</label> <br>
+                {% csrf_token %}
+                {{ form.task }}
+                <br>
+                <button class="btn btn-primary" type="submit">
+                    <i class="fa-solid fa-floppy-disk"></i> Save
+                </button>
+            </form>
+            <br>
+        </div>
+    </div>
+    <br>
+    <a href="{% url 'index' %}" class="btn btn-warning"><i class="fa-solid fa-eye"></i> View Tasks</a>
+
+{% endblock %}
